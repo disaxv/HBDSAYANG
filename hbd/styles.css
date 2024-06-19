@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+/* Responsif dengan Media Queries */
+@media (max-width: 768px) {
+    .gallery {
+        flex-direction: column; /* Vertikal pada layar kecil */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        flex-direction: column; /* Vertikal pada layar sangat kecil */
+    }
+
+    .main h1 {
+        font-size: 2em; /* Mengurangi ukuran judul pada layar kecil */
+    }
+
+    .main p {
+        font-size: 1.2em; /* Mengurangi ukuran teks pada layar kecil */
+    }
+}
+
+/* Body Styles */
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f0f0; /* Warna latar belakang abu-abu */
+    font-family: 'Montserrat', sans-serif;
+    color: #000; /* Warna teks hitam */
+}
+
+/* Blur Effect when Confirmation is Active */
+.blur {
+    filter: blur(10px);
+    transition: filter 0.3s ease;
+}
+
+/* Main Section Styles */
+.main {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #fff; /* Latar belakang putih */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    max-width: 800px;
+    margin: 20px;
+    animation: slideIn 1s ease-in-out;
+}
+
+.main h1, .main h2 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #000; /* Warna teks hitam */
+}
+
+.main p {
+    font-size: 1.5em;
+    line-height: 1.5;
+    color: #333; /* Warna teks abu-abu tua */
+}
+
+/* Gallery Styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 10px; /* Padding di sisi untuk perangkat mobile */
+}
+
+.gallery {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.photo-container {
+    width: 100%;
+    max-width: 600px; /* Lebar maksimal untuk galeri vertikal */
+    margin: 15px auto;
+    padding: 10px;
+    background: linear-gradient(to bottom, #000, #fff); /* Gradient hitam ke putih */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative; /* Untuk positioning overlay */
+    display: none; /* Sembunyikan semua foto kecuali yang aktif */
+}
+
+.photo-container:first-child {
+    display: block; /* Tampilkan foto pertama secara default */
+}
+
+.photo-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Foto dengan ukuran seragam */
+.photo {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+}
+
+/* Overlay pada foto */
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Warna overlay transparan hitam */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px; /* Match the photo's border radius */
+}
+
+.photo-container:hover .photo-overlay {
+    opacity: 1;
+}
+
+.photo-caption {
+    text-align: center;
+    color: #fff; /* Warna teks putih */
+    font-size: 1.2em;
+    padding: 10px;
+    margin-top: 10px; /* Jarak antara foto dan teks */
+}
+
+/* Confirmation Dialog Styles */
+.confirmation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.confirmation-content {
+    background: #fff; /* Latar belakang putih */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.confirmation h2 {
+    margin-top: 0;
+    color: #000; /* Warna teks hitam */
+}
+
+.confirmation button {
+    background: #000; /* Warna tombol hitam */
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s, transform 0.3s;
+    margin: 10px;
+}
+
+.confirmation button:hover {
+    background: #333; /* Warna tombol lebih gelap pada hover */
+    transform: scale(1.05);
+}
+
+/* Message Container Styles */
+.message-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s forwards;
+}
+
+.message {
+    background: #fff; /* Latar belakang putih */
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.message h2 {
+    margin-top: 0;
+    color: #000; /* Warna teks hitam */
+}
+
+.message p {
+    color: #333; /* Warna teks abu-abu tua */
+}
+
+button {
+    background: #000; /* Warna tombol hitam */
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s, transform 0.3s;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background: #333; /* Warna tombol lebih gelap pada hover */
+    transform: scale(1.05);
+}
+
+/* Navigasi Foto */
+.nav-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2em;
+    color: #000; /* Warna tombol navigasi hitam */
+    transition: color 0.3s, transform 0.3s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.nav-button:hover {
+    color: #333; /* Warna tombol lebih gelap pada hover */
+    transform: scale(1.1);
+}
+
+.prev {
+    left: -50px; /* Posisikan tombol "sebelumnya" di kiri */
+}
+
+.next {
+    right: -50px; /* Posisikan tombol "berikutnya" di kanan */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 50px;
+    height: 70px;
+    background-color: #ff5f5f;
+    border-radius: 50% 50% 50% 50%;
+    box-shadow: inset -5px -5px 10px rgba(255, 255, 255, 0.5),
+                inset 5px 5px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
+    animation: floatUp 5s infinite;
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 2px;
+    height: 30px;
+    background: #aaa;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(-800px); }
+}

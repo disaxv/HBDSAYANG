@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Konfirmasi Pembukaan Program -->
+    <div class="confirmation" id="confirmation">
+        <div class="confirmation-content">
+            <h2>Apakah Anda ingin menggunakan audio?</h2>
+            <button onclick="startProgram(true)">Iya</button>
+            <button onclick="startProgram(false)">Tidak</button>
+        </div>
+    </div>
+    <div class="container blur" id="mainContent">
+        <div class="main">
+            <h1>Hai Sayang</h1>
+            <h2>Selamat Ulang Tahun!</h2>
+            <p>Hadiah kecil ini kubuat hampir di setiap malam belakangan ini. dengan berbagai kode merah yang selalu bemunculan kubuat dengan sungguh, meskipun di dalam nya penuh dengan penulisan yang dibarengi dengan penghapusan dan penyuntingan pada setiap katanya nya dan kuulangi terus menerus.</p>
+        </div>
+        <div class="gallery">
+            <button class="nav-button prev" onclick="showPrevPhoto()"><i class="fas fa-chevron-left"></i></button>
+            <div class="photo-container" data-index="1">
+                <img src="foto1.jpg" alt="Foto 1" class="photo" onclick="displayMessage(1)">
+            </div>
+            <div class="photo-container" data-index="2">
+                <img src="foto2.jpg" alt="Foto 2" class="photo" onclick="displayMessage(2)">
+            </div>
+            <div class="photo-container" data-index="3">
+                <img src="foto3.jpg" alt="Foto 3" class="photo" onclick="displayMessage(3)">
+            </div>
+            <div class="photo-container" data-index="4">
+                <img src="foto4.jpg" alt="Foto 4" class="photo" onclick="displayMessage(4)">
+            </div>
+            <div class="photo-container" data-index="5">
+                <img src="foto5.jpg" alt="Foto 5" class="photo" onclick="displayMessage(5)">
+            </div>
+            <div class="photo-container" data-index="6">
+                <img src="foto6.jpg" alt="Foto 6" class="photo" onclick="displayMessage(6)">
+            </div>
+            <button class="nav-button next" onclick="showNextPhoto()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+    <div class="message-container" id="messageContainer">
+        <div class="message">
+            <h2 id="messageTitle">Pesan Spesial:</h2>
+            <p id="messageText">Kamu adalah seseorang yang sangat istimewa. Selamat ulang tahun!</p>
+            <button onclick="closeMessage()">Tutup</button>
+        </div>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="test.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script src="script.js"></script>
+</body>
+</html>
